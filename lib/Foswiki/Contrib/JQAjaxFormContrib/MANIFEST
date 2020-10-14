@@ -1,0 +1,10 @@
+!noci
+data/System/JQAjaxFormContrib.txt 0644
+lib/Foswiki/Contrib/JQAjaxFormContrib/Config.spec 0644
+lib/Foswiki/Contrib/JQAjaxFormContrib/Core.pm 0644
+lib/Foswiki/Contrib/JQAjaxFormContrib/DEPENDENCIES 0644
+lib/Foswiki/Contrib/JQAjaxFormContrib.pm 0644
+pub/System/JQAjaxFormContrib/ajaxForm.js 0644
+pub/System/JQAjaxFormContrib/ajaxForm.js.gz 0644
+pub/System/JQAjaxFormContrib/ajaxForm.uncompressed.js 0644
+pub/System/JQAjaxFormContrib/Makefile 0644

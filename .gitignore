@@ -1,0 +1,12 @@
+*,v
+*.swp
+*.gz
+*.jslint
+/JQAjaxFormContrib.md5
+/JQAjaxFormContrib.sha1
+/JQAjaxFormContrib.tgz
+/JQAjaxFormContrib.txt
+/JQAjaxFormContrib.zip
+/JQAjaxFormContrib_installer
+/JQAjaxFormContrib_installer.pl
+pub/System/JQAjaxFormContrib/ajaxForm.js

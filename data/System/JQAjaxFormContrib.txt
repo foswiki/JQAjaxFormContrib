@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="micha" comment="reprev" date="1595845605" format="1.1" reprev="2" version="2"}%
+---+!! %TOPIC%
+%FORMFIELD{"Description"}%
+
+%TOC%
+
+---++ Description
+
+This packages is a simple jQuery library to help ajaxifying forms. Any form with a class =jqAjaxForm= will
+be ajaxified using its HTML5 data attributes to parametrize it.
+
+---++ Parameters
+
+| *Name* | *Description* | *Default* |
+| =data-recirect= | target to redirect the browser on success, see below for more information | | 
+| =data-reload= | boolean flag to enable page reloading, see more on redirect below | false |
+| =data-block= | boolean flag whether to block the UI as long as the form is being processed by the backend | true |
+| =data-message= | message to be displayed while the UI is being blocked | | 
+
+There are multiple way how the browser is reacting after the form has been processsed successfully.
+
+   1 use the redirect response of the backend returns a json object ={result: { ..., redirect: "...", ...} ...}= or 
+   1 use the redirect as specified in the form itself in a =&jt;input name="redirect" value="..." >= element or 
+   1 use the =data-redirect= HTML5 attribute or
+   1 reload the current page if specified in the =data-reload= boolean parameter
+
+---++ !JavaScript Events
+
+The =jqAjaxForm= will receive events that third party scripts might listen to in order to participate on the form being processed:
+
+   * =beforeSerialize=: called before the form data is serialized
+   * =beforeSubmit=: called before the form is submitted
+   * =uploadProgress=: called when uploading of data 
+   * =error=: called when the backend returned an error
+   * =success=: called when the backend returned successfully
+   * =complete=: called when the form has been fully processed
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+---++ Dependencies
+%$DEPENDENCIES%
+
+---++ Change History
+
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+| 14 Oct 2020 | initial release |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%
