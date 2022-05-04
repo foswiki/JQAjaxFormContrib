@@ -1,7 +1,7 @@
 /*
- * jQuery ajax form 1.02
+ * jQuery ajax form 1.20
  *
- * Copyright (c) 2020 Michael Daum
+ * Copyright (c) 2020-2022 Michael Daum
  *
  * Licensed under the GPL licenses http://www.gnu.org/licenses/gpl.html
  *
@@ -14,7 +14,13 @@
     redirect: null,
     reload: false,
     block: true,
-    message: ""
+    message: "",
+    beforeSerialize: function() {},
+    beforeSubmit: function() { return true; },
+    uploadProgress: function() {},
+    error: function() {},
+    success: function() {},
+    complete: function() {},
   };
 
   // The actual plugin constructor
@@ -36,6 +42,7 @@
     self.elem.ajaxForm({
 
       beforeSerialize: function() {
+        self.opts.beforeSerialize(self);
         self.elem.trigger("beforeSerialize", self);
 
         if (typeof(StrikeOne) !== 'undefined') {
@@ -44,12 +51,17 @@
       }, 
       
       beforeSubmit: function() {
-        self.elem.trigger("beforeSubmit", self);
-        self.block();
+        if (self.opts.beforeSubmit(self)) {
+          self.elem.trigger("beforeSubmit", self);
+          self.block();
+        } else {
+          return false;
+        }
       },
 
       uploadProgress: function(ev, pos, total, percent) {
-        self.elem.trigger("uploadProgress", percent, pos, total);
+        self.opts.uploadProgress(self);
+        self.elem.trigger("uploadProgress", [percent, pos, total]);
       },
       
       error: function(xhr) {
@@ -57,7 +69,8 @@
             response = xhr.responseJSON;
 
         self.unblock();
-        self.elem.trigger("error", self, response);
+        self.opts.error(self, response);
+        self.elem.trigger("error", [self, response]);
 
         if (typeof(response) === 'undefined' || typeof(response.error) === 'undefined') {
           message = "Sorry, an error occurred.";
@@ -75,9 +88,11 @@
 
       success: function(response) {
         self.unblock();
-        self.elem.trigger("success", self, response);
 
-        //console.log("result=",response.result);
+        self.opts.success(self, response);
+        self.elem.trigger("success", [self, response]);
+
+        //console.log("response=",response);
 
         // 1. redirect in response
         if (typeof(response.result) !== 'undefined' && typeof(response.result.redirect) !== 'undefined') {
@@ -108,7 +123,8 @@
           keyElem.val("?" + nonce);
         }
 
-        self.elem.trigger("complete", self, xhr);
+        self.opts.complete(self, xhr);
+        self.elem.trigger("complete", [self, xhr]);
       }
     });
 
@@ -136,6 +152,9 @@
 
     $.unblockUI();
   };
+
+  // export 
+  window.AjaxForm = AjaxForm;
 
   // widget instanziation
   $(function() {

@@ -1,6 +1,6 @@
 # Extension for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQAjaxFormContrib is Copyright (C) 2020 Michael Daum http://michaeldaumconsulting.com
+# JQAjaxFormContrib is Copyright (C) 2020-2022 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@ sub new {
 
   my $this = bless(
     $class->SUPER::new(
-      name => 'JQAjaxFormContrib',
+      name => 'AjaxForm',
       version => $Foswiki::Contrib::JQAjaxFormContrib::VERSION,
       author => 'Michael Daum',
       homepage => 'https://foswiki.org/Extensions/JQAjaxFormContrib',

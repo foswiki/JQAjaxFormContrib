@@ -44,6 +44,7 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+| 04 May 2022 | fixed name of jquery module; make callback handlers of ajaxForm available in <nop>AjaxForm class; export <nop>AjaxForm in global namespace |
 | 14 Oct 2020 | initial release |
 
 %META:FORM{name="PackageForm"}%
@@ -52,7 +53,7 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="2020, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020-2022, Michael Daum, All Rights Reserved"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
 %META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
 %META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%
