@@ -1,7 +1,7 @@
 /*
- * jQuery ajax form 1.20
+ * jQuery ajax form 2.30
  *
- * Copyright (c) 2020-2022 Michael Daum
+ * Copyright (c) 2020-2024 Michael Daum
  *
  * Licensed under the GPL licenses http://www.gnu.org/licenses/gpl.html
  *
@@ -38,6 +38,26 @@
         redirectElem = self.elem.find("input[name=redirect]"),
         keyElem = self.elem.find("input[name=validation_key]:first");
 
+    if (typeof(self.opts.beforeSerialize) !== 'function') {
+      self.opts.beforeSerialize = Function(self.opts.beforeSerialize);
+    }
+    if (typeof(self.opts.beforeSubmit) !== 'function') {
+      self.opts.beforeSubmit = Function(self.opts.beforeSubmit);
+    }
+    if (typeof(self.opts.uploadProgress) !== 'function') {
+      self.opts.uploadProgress = Function(self.opts.uploadProgress);
+    }
+    if (typeof(self.opts.error) !== 'function') {
+      self.opts.error = Function(self.opts.error);
+    }
+    if (typeof(self.opts.success) !== 'function') {
+      self.opts.success = Function(self.opts.success);
+    }
+    if (typeof(self.opts.complete) !== 'function') {
+      self.opts.complete = Function(self.opts.complete);
+    }
+
+
     self.elem.removeAttr('onsubmit');
     self.elem.ajaxForm({
 
@@ -51,6 +71,9 @@
       }, 
       
       beforeSubmit: function() {
+        if (typeof(self.elem.data("validator")) !== 'undefined' && !self.elem.valid()) {
+          return false;
+        }
         if (self.opts.beforeSubmit(self)) {
           self.elem.trigger("beforeSubmit", self);
           self.block();
@@ -86,11 +109,11 @@
         });
       },
 
-      success: function(response) {
+      success: function(response, text, xhr) {
         self.unblock();
 
-        self.opts.success(self, response);
-        self.elem.trigger("success", [self, response]);
+        self.opts.success(self, response, xhr);
+        self.elem.trigger("success", [self, response, xhr]);
 
         //console.log("response=",response);
 

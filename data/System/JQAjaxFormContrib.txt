@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="micha" comment="reprev" date="1595845605" format="1.1" reprev="2" version="2"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1655478401" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -44,6 +44,8 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+| 22 Jan 2024 | block submitting the form when it is not valid;\
+                added javascript callbacks for =beforeSubmit=, =uploadProgress=, =error=, =success= and =complete= events  |
 | 04 May 2022 | fixed name of jquery module; make callback handlers of ajaxForm available in <nop>AjaxForm class; export <nop>AjaxForm in global namespace |
 | 14 Oct 2020 | initial release |
 
@@ -53,7 +55,7 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="2020-2022, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020-2024, Michael Daum, All Rights Reserved"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
 %META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
 %META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%

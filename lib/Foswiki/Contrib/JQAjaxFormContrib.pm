@@ -1,6 +1,6 @@
 # Extension for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# JQAjaxFormContrib is Copyright (C) 2020-2022 Michael Daum http://michaeldaumconsulting.com
+# JQAjaxFormContrib is Copyright (C) 2020-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,11 +18,10 @@ package Foswiki::Contrib::JQAjaxFormContrib;
 use strict;
 use warnings;
 
-use Foswiki::Func ();
-
-our $VERSION = '1.20';
-our $RELEASE = '04 May 2022';
+our $VERSION = '1.40';
+our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = 'Ajaxify html forms';
+our $LICENSECODE = '%$LICENSECODE%';
 our $NO_PREFS_IN_TOPIC = 1;
 
 1;
