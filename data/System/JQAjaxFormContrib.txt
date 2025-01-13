@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1655478401" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1736782356" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -12,10 +12,11 @@ be ajaxified using its HTML5 data attributes to parametrize it.
 ---++ Parameters
 
 | *Name* | *Description* | *Default* |
+| =data-block= | boolean flag whether to block the UI as long as the form is being processed by the backend | true |
+| =data-dialog= | may be "destroy" or "close" | |
+| =data-message= | message to be displayed while the UI is being blocked | | 
 | =data-recirect= | target to redirect the browser on success, see below for more information | | 
 | =data-reload= | boolean flag to enable page reloading, see more on redirect below | false |
-| =data-block= | boolean flag whether to block the UI as long as the form is being processed by the backend | true |
-| =data-message= | message to be displayed while the UI is being blocked | | 
 
 There are multiple way how the browser is reacting after the form has been processsed successfully.
 
@@ -44,10 +45,11 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
-| 22 Jan 2024 | block submitting the form when it is not valid;\
+|  19 Nov 2024 | added =data-dialog= parameter |
+|  22 Jan 2024 | block submitting the form when it is not valid;\
                 added javascript callbacks for =beforeSubmit=, =uploadProgress=, =error=, =success= and =complete= events  |
-| 04 May 2022 | fixed name of jquery module; make callback handlers of ajaxForm available in <nop>AjaxForm class; export <nop>AjaxForm in global namespace |
-| 14 Oct 2020 | initial release |
+|  04 May 2022 | fixed name of jquery module; make callback handlers of ajaxForm available in <nop>AjaxForm class; export <nop>AjaxForm in global namespace |
+|  14 Oct 2020 | initial release |
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
@@ -55,7 +57,7 @@ The =jqAjaxForm= will receive events that third party scripts might listen to in
 %META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
-%META:FIELD{name="Copyright" title="Copyright" value="2020-2024, Michael Daum, All Rights Reserved"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2020-2025, Michael Daum, All Rights Reserved"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
 %META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
 %META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%

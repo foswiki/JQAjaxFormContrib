@@ -1,7 +1,7 @@
 /*
  * jQuery ajax form 2.30
  *
- * Copyright (c) 2020-2024 Michael Daum
+ * Copyright (c) 2020-2025 Michael Daum
  *
  * Licensed under the GPL licenses http://www.gnu.org/licenses/gpl.html
  *
@@ -11,10 +11,11 @@
 "use strict";
 (function($) {
   var defaults = {
+    block: true,
+    dialog: null,
+    message: "",
     redirect: null,
     reload: false,
-    block: true,
-    message: "",
     beforeSerialize: function() {},
     beforeSubmit: function() { return true; },
     uploadProgress: function() {},
@@ -36,7 +37,8 @@
   AjaxForm.prototype.init = function () {
     var self = this,
         redirectElem = self.elem.find("input[name=redirect]"),
-        keyElem = self.elem.find("input[name=validation_key]:first");
+        keyElem = self.elem.find("input[name=validation_key]:first"),
+        dialogElem = self.elem.parents(".ui-dialog-content");
 
     if (typeof(self.opts.beforeSerialize) !== 'function') {
       self.opts.beforeSerialize = Function(self.opts.beforeSerialize);
@@ -97,8 +99,10 @@
 
         if (typeof(response) === 'undefined' || typeof(response.error) === 'undefined') {
           message = "Sorry, an error occurred.";
+          console.error("responseText=",xhr.responseText);
         } else {
           message = response.error.message;
+          console.error("error=",message);
         }
 
         $.pnotify({
@@ -137,7 +141,17 @@
           window.location.reload();
         }
 
-        // 5. do nothing
+        // 5. destroy dialog
+        else if (self.opts.dialog === "destroy") {
+          dialogElem.dialog("destroy");
+        }
+
+        // 6. close dialog
+        else if (self.opts.dialog === "close") {
+          dialogElem.dialog("close");
+        }
+
+        // 7. do nothing
       },
 
       complete: function(xhr) {
