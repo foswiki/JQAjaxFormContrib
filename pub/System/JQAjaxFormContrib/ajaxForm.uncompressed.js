@@ -1,7 +1,7 @@
 /*
- * jQuery ajax form 2.30
+ * jQuery ajax form 2.31
  *
- * Copyright (c) 2020-2025 Michael Daum
+ * Copyright (c) 2020-2026 Michael Daum
  *
  * Licensed under the GPL licenses http://www.gnu.org/licenses/gpl.html
  *
@@ -37,8 +37,7 @@
   AjaxForm.prototype.init = function () {
     var self = this,
         redirectElem = self.elem.find("input[name=redirect]"),
-        keyElem = self.elem.find("input[name=validation_key]:first"),
-        dialogElem = self.elem.parents(".ui-dialog-content");
+        keyElem = self.elem.find("input[name=validation_key]:first");
 
     if (typeof(self.opts.beforeSerialize) !== 'function') {
       self.opts.beforeSerialize = Function(self.opts.beforeSerialize);
@@ -143,12 +142,12 @@
 
         // 5. destroy dialog
         else if (self.opts.dialog === "destroy") {
-          dialogElem.dialog("destroy");
+          self.elem.parents(".ui-dialog-content").dialog("destroy");
         }
 
         // 6. close dialog
         else if (self.opts.dialog === "close") {
-          dialogElem.dialog("close");
+          self.elem.parents(".ui-dialog-content").dialog("close");
         }
 
         // 7. do nothing
